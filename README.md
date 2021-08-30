@@ -1,2 +1,2 @@
 # ansible-tutorial
-This repo is going to include all the tests using ansible
+This repo includes all ansible-tutorial-related files
