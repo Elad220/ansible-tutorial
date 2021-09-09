@@ -2,3 +2,13 @@
   authorized_key:
     user: simone
     key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDNweA0lq+3WYNzTkNfaDRvxsf1udrtFZZlO46zTwaevPmhuJ4WB/CpeLNAg3SUIUa9P+mY5LbrFrRCaDwwQY9ocwvnmDIqEKPXyRB7Wl2huaYbsxuwtCLDyKsJckyv1VR802NSGDgPgEpghB4Pzpe5CH+ZQ9PTjaHcxGeY77lg6VAVS13iGFxLTPsf4YnlYtRMYHtXhA3NG1VNN31hxbJ/fbbuO5LwnjP+7nvGcZ+voxCG5oixYSeLOfZsfa9INzSirbaQtBGvSpE/V5KRZDxP/YPf1LMgWI1Orac7BIyyvbIpADCNDWzLWpFB7hkW3qTd0Ia2CkQDsieXkSamCCETB3IvsgZ7jqDcy+wb+P12u0mMaQCwubecwE95xYmNOr2t+pwB0KwoSdmW+QCqyrpko3b6ylVqB6FhA2g3GhWKD2Zx5mqZkMejPasPUU3nHgYUpw5pB5Ry8UvKY/Tw50TLxfZ8g6EgEBhrtwqOUm/2NuVfHp2zXWo6kUFvLwwvuRs= ubuntu test 1"
+
+- name: generate ssh_config file from template
+  tags: ssh
+  template:
+    src: "{{ ssh_template_file }}"
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart_sshd
